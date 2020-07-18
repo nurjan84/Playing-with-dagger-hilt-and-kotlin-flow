@@ -20,6 +20,7 @@ class MainViewModel @ViewModelInject constructor(private val repo: Repository) :
 
     private val isRefreshed = MutableLiveData<Result<Boolean>>()
 
+    //запускаем подгрузку test.json, при создании этого viewModel, если в базе еще нет этих данных
     init {
         getSomeData(isRefresh = false)
     }

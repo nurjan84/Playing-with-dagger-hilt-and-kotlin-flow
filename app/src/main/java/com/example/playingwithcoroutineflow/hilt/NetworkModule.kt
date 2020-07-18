@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 class NetworkModule {
 
-    private fun loadPageFromAssets(context: Context, file:String):String{
+    private fun loadPageFromAssets(context: Context, file:String):String?{
         var tContents: String? = ""
         try {
             val stream: InputStream = context.assets.open(file)
@@ -33,7 +33,7 @@ class NetworkModule {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return tContents!!
+        return tContents
     }
 
     //интерцептор который подгружает данные из локального файла,
@@ -47,10 +47,10 @@ class NetworkModule {
                 val resp = loadPageFromAssets(context, "test.json")
                 Response.Builder()
                     .code(200)
-                    .message(resp)
+                    .message(resp?:"")
                     .request(chain.request())
                     .protocol(Protocol.HTTP_1_1)
-                    .body(ResponseBody.create(MediaType.parse("application/json"), resp))
+                    .body(ResponseBody.create(MediaType.parse("application/json"), resp?:""))
                     .addHeader("content-type", "application/json")
                     .build()
             }else{

@@ -28,10 +28,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel by viewModels<MainViewModel>()
     private var  adapter : ExampleAdapter? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,16 +35,21 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         setupAdapter()
         pagedDataListener()
 
+
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.getSomeData(isRefresh = true)
         }
     }
 
+    //"слушаем" подгрузку test.json в локалюную базу
     private fun exampleDataRefreshingListener(){
         viewModel.isRefreshed().observe(viewLifecycleOwner, Observer {
             when(it.status){
                 Status.SUCCESS ->{
                     println("data refreshed")
+                }
+                Status.LOADING -> {
+                    println("loading some data...")
                 }
                 else -> {
                     println("error = ${it.error}")
@@ -86,6 +87,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         })
     }
 
+    //"слушаем" подгрузку страниц данных из локалюной базы
     private fun pagedDataListener(){
         viewModel.examplesLiveData.observe(viewLifecycleOwner, Observer { data ->
             if (data != null)

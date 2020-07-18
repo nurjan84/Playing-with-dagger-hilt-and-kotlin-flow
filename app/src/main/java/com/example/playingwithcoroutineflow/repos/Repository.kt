@@ -15,7 +15,7 @@ class Repository @Inject constructor(
     fun getSomeData(isRefresh:Boolean) = request{
         val count = exampleDao.getCountOfRecords()
         if(count == 0 || isRefresh){
-            api.getSomData("/test.json").forEach {
+            api.getSomData().forEach {
                 exampleDao.insert(it)
             }
             true
