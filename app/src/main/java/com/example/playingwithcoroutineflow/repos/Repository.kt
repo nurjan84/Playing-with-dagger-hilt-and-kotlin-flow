@@ -8,9 +8,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class Repository @Inject constructor(
-                                    private val api: ExampleApi,
-                                    private val exampleDao: ExampleDao) : ApiCaller(){
+class Repository constructor(private val api: ExampleApi,
+                             private val exampleDao: ExampleDao) : ApiCaller(){
 
     fun getSomeData(isRefresh:Boolean) = request{
         val count = exampleDao.getCountOfRecords()
