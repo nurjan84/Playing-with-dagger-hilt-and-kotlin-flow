@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.playingwithcoroutineflow.R
+import com.example.playingwithcoroutineflow.hilt.GlideApp
 import com.example.playingwithcoroutineflow.mvvm.models.Callback
 import com.example.playingwithcoroutineflow.room.entities.ExampleEntity
 import kotlinx.android.synthetic.main.item_example.view.*
@@ -45,7 +46,7 @@ class ExampleAdapter  : PagedListAdapter<ExampleEntity, RecyclerView.ViewHolder>
         fun bindViews(item: ExampleEntity?) {
             item?.let {
                 itemView.textView.text = it.name
-                Glide.with(itemView.context).load(item.image).into(itemView.imageView)
+                GlideApp.with(itemView.context).load(item.image).into(itemView.imageView)
             }
             itemView.card.setOnClickListener {
                 callback.process(item)

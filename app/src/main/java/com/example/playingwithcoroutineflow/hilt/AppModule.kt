@@ -5,8 +5,10 @@ import com.example.playingwithcoroutineflow.api.ExampleApi
 import com.example.playingwithcoroutineflow.repos.Repository
 import com.example.playingwithcoroutineflow.room.dao.ExampleDao
 import com.google.gson.GsonBuilder
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -41,4 +43,10 @@ class AppModule {
     fun  getRepo(api: ExampleApi, exampleDao: ExampleDao): Repository {
         return Repository(api,exampleDao)
     }
+}
+
+@EntryPoint
+@InstallIn(ApplicationComponent::class)
+interface OkHttpClientInterface {
+    fun getHttpClient(): OkHttpClient
 }
