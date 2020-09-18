@@ -27,4 +27,9 @@
             android:name="name"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/featureFragment"
+        android:name="com.example.playingwithcoroutineflow.dev.FeatureFragment"
+        android:label="fragment_feature"
+        tools:layout="@layout/fragment_feature" />
 </navigation>
