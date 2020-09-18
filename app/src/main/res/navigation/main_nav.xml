@@ -35,4 +35,9 @@
         android:name="com.example.playingwithcoroutineflow.dev.FeatureFragment"
         android:label="fragment_feature"
         tools:layout="@layout/fragment_feature" />
+    <fragment
+        android:id="@+id/task2Fragment"
+        android:name="com.example.playingwithcoroutineflow.dev.Task2Fragment"
+        android:label="fragment_task2"
+        tools:layout="@layout/fragment_task2" />
 </navigation>
