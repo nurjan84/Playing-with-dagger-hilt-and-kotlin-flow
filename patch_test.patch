@@ -1,0 +1,16 @@
+Index: app/src/main/java/com/example/playingwithcoroutineflow/mvvm/views/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/playingwithcoroutineflow/mvvm/views/MainActivity.kt	(revision 5ad598456abb069d9b6c3fbc0612d76986d8a9c9)
++++ app/src/main/java/com/example/playingwithcoroutineflow/mvvm/views/MainActivity.kt	(date 1600755836548)
+@@ -24,4 +24,7 @@
+         return NavigationUI.navigateUp(navController, null)
+     }
+ 
++    override fun onResume() {
++        super.onResume()
++    }
+ }
+\ No newline at end of file
